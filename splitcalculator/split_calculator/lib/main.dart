@@ -102,27 +102,22 @@ class CalculatorArea extends StatelessWidget {
             width: constraints.maxWidth,
             height: constraints.maxHeight * 0.34,
             child: Container(
-              child: ListView.separated(
-                  itemBuilder: (context, index) {
-                    switch (Selection.values[index]) {
-                      case Selection.value:
-                        {
-                          return Text("Value");
-                        }
-                      case Selection.people:
-                        {
-                          return Text("2 people");
-                        }
-                      case Selection.percent:
-                        {
-                          return Text("10% tip");
-                        }
-                    }
-                  },
-                  separatorBuilder: (context, index) {
-                    return Divider();
-                  },
-                  itemCount: 3),
+              child: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      height: constraints.maxHeight / 3,
+                      child: Text("Value"),
+                    ),
+                    Container(
+                      height: constraints.maxHeight / 3,
+                      child: Text("Value"),
+                    )
+                  ],
+                );
+              }),
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(16)),
             ),
