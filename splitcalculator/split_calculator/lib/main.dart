@@ -109,9 +109,18 @@ class CalculatorArea extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Container(
-                        height: constraints.maxHeight / 3,
-                        child: Text("Value", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Container(
+                            height: constraints.maxHeight / 3,
+                            child: Text("Value", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                          ),
+                          Container(
+                            height: constraints.maxHeight / 3,
+                            child: Text("Value2", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                          )
+                        ],
                       ),
                       Container(
                         height: constraints.maxHeight / 3,
