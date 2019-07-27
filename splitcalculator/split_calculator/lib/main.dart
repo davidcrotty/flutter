@@ -104,7 +104,7 @@ class CalculatorArea extends StatelessWidget {
             child: Container(
               child: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
                 return Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,17 +114,26 @@ class CalculatorArea extends StatelessWidget {
                         children: <Widget>[
                           Container(
                             height: constraints.maxHeight / 3,
-                            child: Text("Value", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                            child: Text("Value", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
                           ),
                           Container(
                             height: constraints.maxHeight / 3,
-                            child: Text("Value2", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                            child: Text("200,45", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
                           )
                         ],
                       ),
-                      Container(
-                        height: constraints.maxHeight / 3,
-                        child: Text("Value"),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Container(
+                            height: constraints.maxHeight / 3,
+                            child: Text("2 people", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                          ),
+                          Container(
+                            height: constraints.maxHeight / 3,
+                            child: Text("200,45", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                          )
+                        ],
                       )
                     ],
                   ),
