@@ -104,81 +104,90 @@ class CalculatorArea extends StatelessWidget {
             child: Container(
               child: LayoutBuilder(
                   builder: (BuildContext context, BoxConstraints constraints) {
-                    const dividerHeight = 0.5;
+                const dividerHeight = 0.5;
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Container(
-                          height: (constraints.maxHeight / 3) - dividerHeight,
-                          child: Center(
-                              child: Text("Value",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold))),
-                        ),
-                        Container(
-                          height: (constraints.maxHeight / 3) - dividerHeight,
-                          child: Center(
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Container(
+                            height: (constraints.maxHeight / 3) - dividerHeight,
+                            child: Center(
+                                child: Text("Value",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold))),
+                          ),
+                          Container(
+                            height: (constraints.maxHeight / 3) - dividerHeight,
+                            child: Center(
+                                child: Text(
+                              "200,45",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.purple),
+                            )),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(color: Colors.grey, height: dividerHeight),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Container(
+                            height: (constraints.maxHeight / 3) - dividerHeight,
+                            child: Center(
                               child: Text(
-                            "200,45",
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.purple),
-                          )),
-                        )
-                      ],
+                                "2 people",
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            height: (constraints.maxHeight / 3) - dividerHeight,
+                            child: Center(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  IconButton(
+                                    icon: Icon(Icons.add),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(Icons.remove),
+                                  )
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                     Container(color: Colors.grey, height: dividerHeight),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Container(
-                          height: (constraints.maxHeight / 3) - dividerHeight,
-                          child: Center(
-                            child: Text(
-                              "2 people",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Container(
+                            height: (constraints.maxHeight / 3) - dividerHeight,
+                            child: Center(
+                              child: Text(
+                                "10% tip",
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          height: (constraints.maxHeight / 3) - dividerHeight,
-                          child: Center(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                IconButton(
-                                  icon: Icon(Icons.add),
-                                ),
-                                IconButton(
-                                  icon: Icon(Icons.remove),
-                                )
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Container(color: Colors.grey, height: dividerHeight),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Container(
-                          height: (constraints.maxHeight / 3) - dividerHeight,
-                          child: Center(
-                            child: Text(
-                              "10% tip",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     )
                   ],
                 );
