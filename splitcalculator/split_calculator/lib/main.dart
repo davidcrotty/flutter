@@ -102,23 +102,34 @@ class CalculatorArea extends StatelessWidget {
             width: constraints.maxWidth,
             height: constraints.maxHeight * 0.34,
             child: Container(
-              child: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+              child: LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraints) {
                 return Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Container(
                             height: constraints.maxHeight / 3,
-                            child: Text("Value", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                            child: Center(
+                                child: Text("Value",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold))),
                           ),
                           Container(
                             height: constraints.maxHeight / 3,
-                            child: Text("200,45", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                            child: Center(
+                                child: Text(
+                              "200,45",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.purple),
+                            )),
                           )
                         ],
                       ),
@@ -127,12 +138,42 @@ class CalculatorArea extends StatelessWidget {
                         children: <Widget>[
                           Container(
                             height: constraints.maxHeight / 3,
-                            child: Text("2 people", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                            child: Center(
+                              child: Text(
+                                "2 people",
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                            ),
                           ),
                           Container(
                             height: constraints.maxHeight / 3,
-                            child: Text("200,45", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),),
+                            child: Center(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  IconButton(
+                                    icon: Icon(Icons.add),
+                                  )
+                                ],
+                              ),
+                            ),
                           )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Container(
+                            height: constraints.maxHeight / 3,
+                            child: Center(
+                              child: Text(
+                                "10% tip",
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
                         ],
                       )
                     ],
