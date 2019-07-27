@@ -154,6 +154,9 @@ class CalculatorArea extends StatelessWidget {
                                 children: <Widget>[
                                   IconButton(
                                     icon: Icon(Icons.add),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(Icons.remove),
                                   )
                                 ],
                               ),
