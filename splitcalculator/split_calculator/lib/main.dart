@@ -170,7 +170,7 @@ class CalculatorArea extends StatelessWidget {
                                         onPressed: () {
                                           print("tapped");
                                         },
-                                        padding: EdgeInsets.all(0),
+                                        padding: EdgeInsets.all(8),
                                       ),
                                     ),
                                   ),
@@ -184,7 +184,7 @@ class CalculatorArea extends StatelessWidget {
                                         onPressed: () {
                                           print("tapped");
                                         },
-                                        padding: EdgeInsets.all(0),
+                                        padding: EdgeInsets.all(8),
                                       ),
                                     ),
                                   ),
