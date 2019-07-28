@@ -117,6 +117,9 @@ class CalculatorArea extends StatelessWidget {
                   children: <Widget>[
                     Material(
                       child: InkWell(
+                        customBorder: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(16))
+                        ),
                         onTap: () {
                           print("do stuff");
                         },
