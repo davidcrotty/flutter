@@ -10,16 +10,27 @@ class CalculatorForm extends StatelessWidget {
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(16)),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Column(
-                children: <Widget>[
-                  Container(
-                    child: Text("foo"),
-                  ),
-                  Container(
-                    child: Text("foo"),
-                  )
-                ],
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Column(
+                  children: <Widget>[
+                    FlatButton(
+                      shape: CircleBorder(),
+                      onPressed: () {
+                        print("Pressed");
+                      },
+                      child: Icon(
+                        Icons.keyboard_arrow_down,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    Container(
+                      child: Text("200, 45"),
+                    )
+                  ],
+                ),
               ),
             ],
           ),
