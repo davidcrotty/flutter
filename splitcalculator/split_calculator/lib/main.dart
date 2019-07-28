@@ -116,7 +116,7 @@ class CalculatorArea extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                      padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
@@ -144,7 +144,7 @@ class CalculatorArea extends StatelessWidget {
                     ),
                     Container(color: Colors.grey, height: dividerHeight),
                     Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
+                      padding: const EdgeInsets.only(left: 16.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
@@ -174,7 +174,7 @@ class CalculatorArea extends StatelessWidget {
                                         onPressed: () {
                                           print("tapped");
                                         },
-                                        padding: EdgeInsets.all(8),
+                                        padding: EdgeInsets.all(16),
                                       ),
                                     ),
                                   ),
@@ -186,7 +186,7 @@ class CalculatorArea extends StatelessWidget {
                                         child: Icon(Icons.remove, size: 36),
                                         shape: CircleBorder(),
                                         onPressed: null,
-                                        padding: EdgeInsets.all(8),
+                                        padding: EdgeInsets.all(16),
                                       ),
                                     ),
                                   ),
@@ -199,7 +199,7 @@ class CalculatorArea extends StatelessWidget {
                     ),
                     Container(color: Colors.grey, height: dividerHeight),
                     Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
+                      padding: const EdgeInsets.only(left: 16.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
@@ -229,7 +229,7 @@ class CalculatorArea extends StatelessWidget {
                                         onPressed: () {
                                           print("tapped");
                                         },
-                                        padding: EdgeInsets.all(8),
+                                        padding: EdgeInsets.all(16),
                                       ),
                                     ),
                                   ),
@@ -241,7 +241,7 @@ class CalculatorArea extends StatelessWidget {
                                         child: Icon(Icons.remove, size: 36),
                                         shape: CircleBorder(),
                                         onPressed: null,
-                                        padding: EdgeInsets.all(8),
+                                        padding: EdgeInsets.all(16),
                                       ),
                                     ),
                                   ),
