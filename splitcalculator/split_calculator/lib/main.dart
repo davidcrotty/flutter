@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'selection.dart';
+import 'package:flutter/rendering.dart';
 
 // inspiration: https://dribbble.com/shots/6792553-Split-Calculator/attachments/1450047
-void main() => runApp(MyApp());
+void main() {
+//  debugPaintSizeEnabled=true;
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -157,12 +160,34 @@ class CalculatorArea extends StatelessWidget {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  IconButton(
-                                    icon: Icon(Icons.add),
+                                  Material(
+                                    color: Colors.transparent,
+                                    child: ButtonTheme(
+                                      minWidth: 0,
+                                      child: FlatButton(
+                                        child: Icon(Icons.add),
+                                        shape: CircleBorder(),
+                                        onPressed: () {
+                                          print("tapped");
+                                        },
+                                        padding: EdgeInsets.all(0),
+                                      ),
+                                    ),
                                   ),
-                                  IconButton(
-                                    icon: Icon(Icons.remove),
-                                  )
+                                  Material(
+                                    color: Colors.transparent,
+                                    child: ButtonTheme(
+                                      minWidth: 0,
+                                      child: FlatButton(
+                                        child: Icon(Icons.remove),
+                                        shape: CircleBorder(),
+                                        onPressed: () {
+                                          print("tapped");
+                                        },
+                                        padding: EdgeInsets.all(0),
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
