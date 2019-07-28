@@ -12,25 +12,41 @@ class CalculatorForm extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Column(
-                  children: <Widget>[
-                    FlatButton(
-                      shape: CircleBorder(),
-                      onPressed: () {
-                        print("Pressed");
-                      },
-                      child: Icon(
-                        Icons.keyboard_arrow_down,
-                        color: Colors.grey,
+              Column(
+                children: <Widget>[
+                  Container(
+                    height: 80,
+                    child: ButtonTheme(
+                      height: 36,
+                      minWidth: 36,
+                      child: FlatButton(
+                        shape: CircleBorder(),
+                        onPressed: () {
+                          print("Pressed");
+                        },
+                        child: Icon(
+                          Icons.keyboard_arrow_down,
+                          color: Colors.grey,
+                        ),
                       ),
                     ),
-                    Container(
-                      child: Text("200, 45"),
-                    )
-                  ],
-                ),
+                  ),
+                  Expanded(
+                    child: Center(child: Text("200, 45")),
+                  ),
+                  Container(
+                    height: 80,
+                    child: Center(
+                      child: Text(
+                        "Calculate",
+                        style: TextStyle(
+                            color: Colors.purple,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  )
+                ],
               ),
             ],
           ),
