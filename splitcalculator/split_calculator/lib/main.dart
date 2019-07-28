@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 
 // inspiration: https://dribbble.com/shots/6792553-Split-Calculator/attachments/1450047
 void main() {
 //  debugPaintSizeEnabled=true;
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.black, // status bar color
+  ));
   runApp(MyApp());
 }
 
