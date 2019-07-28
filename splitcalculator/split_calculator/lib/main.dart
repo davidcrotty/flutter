@@ -165,7 +165,7 @@ class CalculatorArea extends StatelessWidget {
                                     child: ButtonTheme(
                                       minWidth: 0,
                                       child: FlatButton(
-                                        child: Icon(Icons.add),
+                                        child: Icon(Icons.add, size: 36, color: Colors.purple),
                                         shape: CircleBorder(),
                                         onPressed: () {
                                           print("tapped");
@@ -179,11 +179,9 @@ class CalculatorArea extends StatelessWidget {
                                     child: ButtonTheme(
                                       minWidth: 0,
                                       child: FlatButton(
-                                        child: Icon(Icons.remove),
+                                        child: Icon(Icons.remove, size: 36),
                                         shape: CircleBorder(),
-                                        onPressed: () {
-                                          print("tapped");
-                                        },
+                                        onPressed: null,
                                         padding: EdgeInsets.all(8),
                                       ),
                                     ),
