@@ -12,41 +12,52 @@ class CalculatorForm extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Column(
-                children: <Widget>[
-                  Container(
-                    height: 80,
-                    child: ButtonTheme(
-                      height: 36,
-                      minWidth: 36,
-                      child: FlatButton(
-                        shape: CircleBorder(),
-                        onPressed: () {
-                          print("Pressed");
-                        },
-                        child: Icon(
-                          Icons.keyboard_arrow_down,
-                          color: Colors.grey,
+              Expanded(
+                child: Column(
+                  children: <Widget>[
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                        height: 80,
+                        child: ButtonTheme(
+                          height: 36,
+                          minWidth: 36,
+                          child: FlatButton(
+                            shape: CircleBorder(),
+                            onPressed: () {
+                              print("Pressed");
+                            },
+                            child: Icon(
+                              Icons.keyboard_arrow_down,
+                              color: Colors.grey,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Center(child: Text("200, 45")),
-                  ),
-                  Container(
-                    height: 80,
-                    child: Center(
-                      child: Text(
-                        "Calculate",
-                        style: TextStyle(
-                            color: Colors.purple,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                      ),
+                    Expanded(
+                      child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 16.0),
+                            child: Text("200, 45"),
+                          )),
                     ),
-                  )
-                ],
+                    Container(
+                      height: 80,
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Calculate",
+                          style: TextStyle(
+                              color: Colors.purple,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ],
           ),
