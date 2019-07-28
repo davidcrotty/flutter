@@ -195,7 +195,7 @@ class CalculatorArea extends StatelessWidget {
                     ),
                     Container(color: Colors.grey, height: dividerHeight),
                     Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                      padding: const EdgeInsets.only(left: 8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
@@ -209,6 +209,42 @@ class CalculatorArea extends StatelessWidget {
                               ),
                             ),
                           ),
+                          Container(
+                            height: (constraints.maxHeight / 3) - dividerHeight,
+                            child: Center(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Material(
+                                    color: Colors.transparent,
+                                    child: ButtonTheme(
+                                      minWidth: 0,
+                                      child: FlatButton(
+                                        child: Icon(Icons.add, size: 36, color: Colors.purple),
+                                        shape: CircleBorder(),
+                                        onPressed: () {
+                                          print("tapped");
+                                        },
+                                        padding: EdgeInsets.all(8),
+                                      ),
+                                    ),
+                                  ),
+                                  Material(
+                                    color: Colors.transparent,
+                                    child: ButtonTheme(
+                                      minWidth: 0,
+                                      child: FlatButton(
+                                        child: Icon(Icons.remove, size: 36),
+                                        shape: CircleBorder(),
+                                        onPressed: null,
+                                        padding: EdgeInsets.all(8),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
                         ],
                       ),
                     )
