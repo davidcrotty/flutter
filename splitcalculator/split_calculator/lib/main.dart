@@ -115,33 +115,40 @@ class CalculatorArea extends StatelessWidget {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                            height: (constraints.maxHeight / 3) - dividerHeight,
-                            child: Center(
-                                child: Text("Value",
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold))),
+                    Material(
+                      child: InkWell(
+                        onTap: () {
+                          print("do stuff");
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Container(
+                                height: (constraints.maxHeight / 3) - dividerHeight,
+                                child: Center(
+                                    child: Text("Value",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold))),
+                              ),
+                              Container(
+                                height: (constraints.maxHeight / 3) - dividerHeight,
+                                child: Center(
+                                    child: Text(
+                                  "200,45",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.purple),
+                                )),
+                              )
+                            ],
                           ),
-                          Container(
-                            height: (constraints.maxHeight / 3) - dividerHeight,
-                            child: Center(
-                                child: Text(
-                              "200,45",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.purple),
-                            )),
-                          )
-                        ],
+                        ),
                       ),
-                    ),
+                    color: Colors.transparent,),
                     Container(color: Colors.grey, height: dividerHeight),
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0),
