@@ -44,6 +44,14 @@ class CalculatorForm extends StatelessWidget {
                           )),
                     ),
                     Container(
+                      decoration: BoxDecoration(
+                        border: Border(
+                          top: BorderSide(
+                            color: Colors.grey,
+                            width: 0.5
+                          )
+                        )
+                      ),
                       height: 80,
                       child: Align(
                         alignment: Alignment.center,
