@@ -36,13 +36,47 @@ class CalculatorForm extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      child: Align(
-                          alignment: Alignment.centerRight,
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 16.0),
-                            child: Text("200, 45"),
-                          )),
-                    ),
+                        child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              ButtonTheme(
+                                height: 36,
+                                minWidth: 36,
+                                child: FlatButton(
+                                  shape: CircleBorder(),
+                                  onPressed: () {
+                                    print("Tapped");
+                                  },
+                                  child: Icon(
+                                    Icons.clear,
+                                    color: Colors.grey,
+                                    size: 16,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 16),
+                                child: Text("220, 45", style: TextStyle(
+                                    fontSize: 50,
+                                    color: Colors.black)),
+                              ),
+                            ],
+                          ),
+                          Align(
+                            child: Text("Value",
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold, color: Colors.grey)),
+                            alignment: Alignment.centerRight,
+                          )
+                        ],
+                      ),
+                    )),
                     Container(
                       decoration: BoxDecoration(
                           border: Border(
