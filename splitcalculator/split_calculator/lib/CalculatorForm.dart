@@ -45,22 +45,30 @@ class CalculatorForm extends StatelessWidget {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        border: Border(
-                          top: BorderSide(
-                            color: Colors.grey,
-                            width: 0.5
-                          )
-                        )
-                      ),
+                          border: Border(
+                              top: BorderSide(color: Colors.grey, width: 0.5))),
                       height: 80,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "Calculate",
-                          style: TextStyle(
-                              color: Colors.purple,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                      child: Material(
+                        borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(16),
+                            bottomRight: Radius.circular(16)),
+                        child: InkWell(
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(16),
+                              bottomRight: Radius.circular(16)),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Calculate",
+                              style: TextStyle(
+                                  color: Colors.purple,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          onTap: () {
+                            print("tapped");
+                          },
                         ),
                       ),
                     )
