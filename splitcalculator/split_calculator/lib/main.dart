@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 
 import 'CalculatorForm.dart';
+import 'animations.dart';
 
 // inspiration: https://dribbble.com/shots/6792553-Split-Calculator/attachments/1450047
 void main() {
@@ -122,7 +123,10 @@ class CalculatorArea extends StatelessWidget {
                       HeroFlightDirection flightDirection,
                           BuildContext fromHeroContext,
                           BuildContext toHeroContext) {
-                        return CalculatorInputForm();
+                        return FadeTransition(
+                          // TODO change this to do a quadratic fade
+                          child: CalculatorForm(), opacity: Animation(1.0),
+                        );
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
