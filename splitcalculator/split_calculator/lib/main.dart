@@ -115,183 +115,178 @@ class CalculatorArea extends StatelessWidget {
                 child: Container(
                   child: LayoutBuilder(builder:
                       (BuildContext context, BoxConstraints constraints) {
-                    const dividerHeight = 0.5;
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Material(
-                          child: InkWell(
-                            customBorder: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(16),
-                                    topRight: Radius.circular(16))),
-                            onTap: () {
-                              Navigator.of(context).push(PageRouteBuilder<
-                                      CalculatorForm>(
-                                  pageBuilder: (BuildContext context,
-                                      Animation<double> animation,
-                                      Animation<double> secondaryAnimation) {
-                                return CalculatorForm();
-                              }));
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 16.0, right: 16.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Container(
-                                    height: (constraints.maxHeight / 3) -
-                                        dividerHeight,
-                                    child: Center(
-                                        child: Text("Value",
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold))),
-                                  ),
-                                  Text(
-                                    "200,45",
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.purple),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          color: Colors.transparent,
-                        ),
-                        Container(color: Colors.grey, height: dividerHeight),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Container(
-                                height:
-                                    (constraints.maxHeight / 3) - dividerHeight,
-                                child: Center(
-                                  child: Text(
-                                    "2 people",
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                height:
-                                    (constraints.maxHeight / 3) - dividerHeight,
-                                child: Center(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Material(
-                                        color: Colors.transparent,
-                                        child: ButtonTheme(
-                                          minWidth: 0,
-                                          child: FlatButton(
-                                            child: Icon(Icons.add,
-                                                size: 36, color: Colors.purple),
-                                            shape: CircleBorder(),
-                                            onPressed: () {
-                                              print("tapped");
-                                            },
-                                            padding: EdgeInsets.all(16),
-                                          ),
-                                        ),
-                                      ),
-                                      Material(
-                                        color: Colors.transparent,
-                                        child: ButtonTheme(
-                                          minWidth: 0,
-                                          child: FlatButton(
-                                            child: Icon(Icons.remove, size: 36),
-                                            shape: CircleBorder(),
-                                            onPressed: null,
-                                            padding: EdgeInsets.all(16),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Container(color: Colors.grey, height: dividerHeight),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Container(
-                                height:
-                                    (constraints.maxHeight / 3) - dividerHeight,
-                                child: Center(
-                                  child: Text(
-                                    "10% tip",
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                height:
-                                    (constraints.maxHeight / 3) - dividerHeight,
-                                child: Center(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Material(
-                                        color: Colors.transparent,
-                                        child: ButtonTheme(
-                                          minWidth: 0,
-                                          child: FlatButton(
-                                            child: Icon(Icons.add,
-                                                size: 36, color: Colors.purple),
-                                            shape: CircleBorder(),
-                                            onPressed: () {
-                                              print("tapped");
-                                            },
-                                            padding: EdgeInsets.all(16),
-                                          ),
-                                        ),
-                                      ),
-                                      Material(
-                                        color: Colors.transparent,
-                                        child: ButtonTheme(
-                                          minWidth: 0,
-                                          child: FlatButton(
-                                            child: Icon(Icons.remove, size: 36),
-                                            shape: CircleBorder(),
-                                            onPressed: null,
-                                            padding: EdgeInsets.all(16),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        )
-                      ],
+                    return CalculationTable(cellHeight: constraints.maxHeight / 3,
                     );
                   }),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16)),
                 ),
               )
             ],
           );
         }),
+      ),
+    );
+  }
+}
+
+class CalculationTable extends StatelessWidget {
+  final num cellHeight;
+  final dividerHeight = 0.5;
+
+  const CalculationTable({Key key, @required this.cellHeight})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Material(
+            child: InkWell(
+              customBorder: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(16))),
+              onTap: () {
+                Navigator.of(context).push(PageRouteBuilder<CalculatorForm>(
+                    pageBuilder: (BuildContext context,
+                        Animation<double> animation,
+                        Animation<double> secondaryAnimation) {
+                  return CalculatorForm();
+                }));
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Container(
+                      height: cellHeight - dividerHeight,
+                      child: Center(
+                          child: Text("Value",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold))),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            color: Colors.transparent,
+          ),
+          Container(color: Colors.grey, height: dividerHeight),
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Container(
+                  height: cellHeight - dividerHeight,
+                  child: Center(
+                    child: Text(
+                      "2 people",
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: cellHeight - dividerHeight,
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Material(
+                          color: Colors.transparent,
+                          child: ButtonTheme(
+                            minWidth: 0,
+                            child: FlatButton(
+                              child:
+                                  Icon(Icons.add, size: 36, color: Colors.purple),
+                              shape: CircleBorder(),
+                              onPressed: () {
+                                print("tapped");
+                              },
+                              padding: EdgeInsets.all(16),
+                            ),
+                          ),
+                        ),
+                        Material(
+                          color: Colors.transparent,
+                          child: ButtonTheme(
+                            minWidth: 0,
+                            child: FlatButton(
+                              child: Icon(Icons.remove, size: 36),
+                              shape: CircleBorder(),
+                              onPressed: null,
+                              padding: EdgeInsets.all(16),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Container(color: Colors.grey, height: dividerHeight),
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Container(
+                  height: cellHeight - dividerHeight,
+                  child: Center(
+                    child: Text(
+                      "10% tip",
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: cellHeight - dividerHeight,
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Material(
+                          color: Colors.transparent,
+                          child: ButtonTheme(
+                            minWidth: 0,
+                            child: FlatButton(
+                              child:
+                                  Icon(Icons.add, size: 36, color: Colors.purple),
+                              shape: CircleBorder(),
+                              onPressed: () {
+                                print("tapped");
+                              },
+                              padding: EdgeInsets.all(16),
+                            ),
+                          ),
+                        ),
+                        Material(
+                          color: Colors.transparent,
+                          child: ButtonTheme(
+                            minWidth: 0,
+                            child: FlatButton(
+                              child: Icon(Icons.remove, size: 36),
+                              shape: CircleBorder(),
+                              onPressed: null,
+                              padding: EdgeInsets.all(16),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
