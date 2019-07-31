@@ -8,10 +8,7 @@ class CalculatorForm extends StatelessWidget {
       child: Container(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Hero(
-            tag: "calculatorform",
-            child: new CalculatorInputForm(),
-          ),
+          child: new CalculatorInputForm(),
         ),
       ),
     );
