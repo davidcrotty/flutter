@@ -150,18 +150,12 @@ class CalculatorArea extends StatelessWidget {
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.bold))),
                                   ),
-                                  Container(
-                                    height: (constraints.maxHeight / 3) -
-                                        dividerHeight,
-                                    color: Colors.white,
-                                    child: Center(
-                                        child: Text(
-                                          "200,45",
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.purple),
-                                        )),
+                                  Text(
+                                    "200,45",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.purple),
                                   )
                                 ],
                               ),
