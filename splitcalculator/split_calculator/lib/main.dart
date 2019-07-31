@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
           body: SafeArea(
-        child: Container(color: Colors.black, child: CalculatorArea()),
+        child: Container(color: Colors.black, child: CalculatorForm()),
       )),
     );
   }
