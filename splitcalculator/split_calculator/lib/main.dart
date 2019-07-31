@@ -115,7 +115,20 @@ class CalculatorArea extends StatelessWidget {
                 child: Container(
                   child: LayoutBuilder(builder:
                       (BuildContext context, BoxConstraints constraints) {
-                    return CalculationTable(cellHeight: constraints.maxHeight / 3,
+                    return Stack(
+                      children: <Widget>[
+                        CalculationTable(
+                          cellHeight: constraints.maxHeight / 3,
+                        ),
+                        Positioned(
+                            top: (((constraints.maxHeight / 3) / 2) - 12), // mid point of a cell, minus divider
+                            right: 16,
+                            child: Text("200,45",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.purple)))
+                      ],
                     );
                   }),
                 ),
@@ -139,8 +152,7 @@ class CalculationTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16)),
+          color: Colors.white, borderRadius: BorderRadius.circular(16)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -187,7 +199,8 @@ class CalculationTable extends StatelessWidget {
                   child: Center(
                     child: Text(
                       "2 people",
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -202,8 +215,8 @@ class CalculationTable extends StatelessWidget {
                           child: ButtonTheme(
                             minWidth: 0,
                             child: FlatButton(
-                              child:
-                                  Icon(Icons.add, size: 36, color: Colors.purple),
+                              child: Icon(Icons.add,
+                                  size: 36, color: Colors.purple),
                               shape: CircleBorder(),
                               onPressed: () {
                                 print("tapped");
@@ -242,7 +255,8 @@ class CalculationTable extends StatelessWidget {
                   child: Center(
                     child: Text(
                       "10% tip",
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -257,8 +271,8 @@ class CalculationTable extends StatelessWidget {
                           child: ButtonTheme(
                             minWidth: 0,
                             child: FlatButton(
-                              child:
-                                  Icon(Icons.add, size: 36, color: Colors.purple),
+                              child: Icon(Icons.add,
+                                  size: 36, color: Colors.purple),
                               shape: CircleBorder(),
                               onPressed: () {
                                 print("tapped");
