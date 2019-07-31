@@ -123,10 +123,12 @@ class CalculatorArea extends StatelessWidget {
                       HeroFlightDirection flightDirection,
                           BuildContext fromHeroContext,
                           BuildContext toHeroContext) {
-                        return FadeTransition(
-                          // TODO change this to do a quadratic fade
-                          child: CalculatorForm(), opacity: Animation(1.0),
-                        );
+                        return CalculatorInputForm();
+//                        return FadeTransition(
+//                          // TODO change this to do a quadratic fade
+//                          // dont forget there's also the child placeholder to explore
+//                          child: CalculatorForm(), opacity: Animation(1.0),
+//                        );
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
