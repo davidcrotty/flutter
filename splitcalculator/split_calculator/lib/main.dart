@@ -9,7 +9,7 @@ import 'animations.dart';
 // inspiration: https://dribbble.com/shots/6792553-Split-Calculator/attachments/1450047
 void main() {
 //  debugPaintSizeEnabled=true;
-//  timeDilation = 5;
+  timeDilation = 5;
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.black, // status bar color
   ));
@@ -128,11 +128,13 @@ class CalculatorArea extends StatelessWidget {
                             right: 16,
                             child: Hero(
                               tag: "text",
-                              child: Text("200,45",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.purple)),
+                              child: Material(
+                                child: Text("200,45",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.purple)),
+                              ),
                             ))
                       ],
                     );
