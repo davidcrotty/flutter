@@ -9,7 +9,7 @@ import 'animations.dart';
 // inspiration: https://dribbble.com/shots/6792553-Split-Calculator/attachments/1450047
 void main() {
 //  debugPaintSizeEnabled=true;
-  timeDilation = 5;
+//  timeDilation = 5;
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.black, // status bar color
   ));
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
           body: SafeArea(
-        child: Container(color: Colors.black, child: CalculatorForm()),
+        child: Container(color: Colors.black, child: CalculatorArea()),
       )),
     );
   }
@@ -117,17 +117,23 @@ class CalculatorArea extends StatelessWidget {
                       (BuildContext context, BoxConstraints constraints) {
                     return Stack(
                       children: <Widget>[
-                        CalculationTable(
-                          cellHeight: constraints.maxHeight / 3,
+                        Hero(
+                          tag: "table",
+                          child: CalculationTable(
+                            cellHeight: constraints.maxHeight / 3,
+                          ),
                         ),
                         Positioned(
                             top: (((constraints.maxHeight / 3) / 2) - 12), // mid point of a cell, minus divider
                             right: 16,
-                            child: Text("200,45",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.purple)))
+                            child: Hero(
+                              tag: "text",
+                              child: Text("200,45",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.purple)),
+                            ))
                       ],
                     );
                   }),
