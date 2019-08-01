@@ -142,11 +142,12 @@ class CalculatorArea extends StatelessWidget {
                             child: Hero(
                               tag: "text",
                               child: Material(
-                                child: Text("200,45",
+                                child: Text("220,45",
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.purple)),
+                                        color: Colors.purple,
+                                    backgroundColor: Colors.white)),
                               ),
                             ))
                       ],
@@ -331,11 +332,6 @@ class Calculator extends StatelessWidget {
   const Calculator({
     Key key,
   }) : super(key: key);
-
-  // Stack
-  // layer 1 use widget builder, / screen by 3.
-  // specifies columns.
-  // layer 2. Merely positions
 
   @override
   Widget build(BuildContext context) {
