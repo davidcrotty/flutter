@@ -142,6 +142,7 @@ class CalculatorArea extends StatelessWidget {
                             child: Hero(
                               tag: "text",
                               child: Material(
+                                type: MaterialType.transparency,
                                 child: Text("220,45",
                                     style: TextStyle(
                                         fontSize: 20,
