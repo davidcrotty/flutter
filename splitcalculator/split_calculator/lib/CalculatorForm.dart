@@ -149,7 +149,9 @@ class CalculatorInputForm extends StatelessWidget {
 
                     return toHeroContext.widget;
                 },
-                child: Material(child: Text("220,45", style: TextStyle(fontSize: 50, color: Colors.purple, backgroundColor: Colors.white, fontWeight: FontWeight.bold)))))
+                child: Material(
+                    type: MaterialType.transparency,
+                    child: Text("220,45", style: TextStyle(fontSize: 50, color: Colors.purple, backgroundColor: Colors.white, fontWeight: FontWeight.bold)))))
       ],
     );
   }
