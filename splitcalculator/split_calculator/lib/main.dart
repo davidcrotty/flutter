@@ -119,12 +119,25 @@ class CalculatorArea extends StatelessWidget {
                       children: <Widget>[
                         Hero(
                           tag: "table",
+                          flightShuttleBuilder: (BuildContext flightContext,
+                              Animation<double> animation,
+                              HeroFlightDirection flightDirection,
+                              BuildContext fromHeroContext,
+                              BuildContext toHeroContext) {
+                            return Container(
+                              height: constraints.maxHeight,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(16)),
+                            );
+                          },
                           child: CalculationTable(
                             cellHeight: constraints.maxHeight / 3,
                           ),
                         ),
                         Positioned(
-                            top: (((constraints.maxHeight / 3) / 2) - 12), // mid point of a cell, minus divider
+                            top: (((constraints.maxHeight / 3) / 2) - 12),
+                            // mid point of a cell, minus divider
                             right: 16,
                             child: Hero(
                               tag: "text",
