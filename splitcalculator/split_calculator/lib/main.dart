@@ -330,7 +330,7 @@ class People extends StatelessWidget {
                       child: Icon(Icons.add, size: 36, color: Colors.purple),
                       shape: CircleBorder(),
                       onPressed: () {
-                        print("tapped");
+                        counter.incrementPeople();
                       },
                       padding: EdgeInsets.all(16),
                     ),
