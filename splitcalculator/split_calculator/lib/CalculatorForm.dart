@@ -157,12 +157,16 @@ class CalculatorInputForm extends StatelessWidget {
                       child: Material(
                           type: MaterialType.transparency,
                           child: Container(
-                              child: Text("220,45",
-                                  style: TextStyle(
-                                      fontSize: 50,
-                                      color: Colors.purple,
-                                      backgroundColor: Colors.white,
-                                      fontWeight: FontWeight.bold)))),
+                            child: SizedBox(
+                              height: 50,
+                              width: constraints.maxWidth / 2,
+                              child: TextField(
+                                keyboardType: TextInputType.number,
+                                autofocus: true,
+                                decoration: null,
+                              ),
+                            )
+                          )),
                     )))
           ],
         );
