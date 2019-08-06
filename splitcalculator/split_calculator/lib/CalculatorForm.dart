@@ -103,7 +103,8 @@ class CalculatorInputForm extends StatelessWidget {
                       Container(
                         decoration: BoxDecoration(
                             border: Border(
-                                top: BorderSide(color: Colors.grey, width: 0.5))),
+                                top: BorderSide(
+                                    color: Colors.grey, width: 0.5))),
                         height: 80,
                         child: Material(
                           borderRadius: BorderRadius.only(
@@ -136,23 +137,29 @@ class CalculatorInputForm extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(
+        Positioned( // wrap this in builder
             right: 16,
             top: 272,
             child: Hero(
                 tag: "text",
                 flightShuttleBuilder: (BuildContext flightContext,
-                Animation<double> animation,
-                HeroFlightDirection flightDirection,
+                    Animation<double> animation,
+                    HeroFlightDirection flightDirection,
                     BuildContext fromHeroContext,
                     BuildContext toHeroContext) {
-
-                    return toHeroContext.widget;
+                  return toHeroContext.widget;
                 },
-                child: Material(
-                    type: MaterialType.transparency,
-                    child: Container(
-                        child: Text("220,45", style: TextStyle(fontSize: 50, color: Colors.purple, backgroundColor: Colors.white, fontWeight: FontWeight.bold))))))
+                child: FittedBox(
+                  child: Material(
+                      type: MaterialType.transparency,
+                      child: Container(
+                          child: Text("220,45",
+                              style: TextStyle(
+                                  fontSize: 50,
+                                  color: Colors.purple,
+                                  backgroundColor: Colors.white,
+                                  fontWeight: FontWeight.bold)))),
+                )))
       ],
     );
   }
