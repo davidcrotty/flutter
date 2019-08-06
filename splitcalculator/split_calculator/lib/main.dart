@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
+import 'package:provider/provider.dart';
 
+import 'CalculatorBloc.dart';
 import 'CalculatorForm.dart';
 import 'animations.dart';
 
@@ -131,8 +133,13 @@ class CalculatorArea extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(16)),
                             );
                           },
-                          child: CalculationTable(
-                            cellHeight: constraints.maxHeight / 3,
+                          child: ChangeNotifierProvider<CalculatorBloc>(
+                            builder: (BuildContext context) {
+                              return CalculatorBloc();
+                            },
+                            child: CalculationTable(
+                              cellHeight: constraints.maxHeight / 3,
+                            ),
                           ),
                         ),
                         Positioned(
@@ -148,7 +155,7 @@ class CalculatorArea extends StatelessWidget {
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.purple,
-                                    backgroundColor: Colors.white)),
+                                        backgroundColor: Colors.white)),
                               ),
                             ))
                       ],
@@ -173,158 +180,179 @@ class CalculationTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(16)),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Material(
-            child: InkWell(
-              customBorder: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16))),
-              onTap: () {
-                Navigator.of(context).push(PageRouteBuilder<CalculatorForm>(
-                    pageBuilder: (BuildContext context,
-                        Animation<double> animation,
-                        Animation<double> secondaryAnimation) {
-                  return CalculatorForm();
-                }));
-              },
-              child: Padding(
-                padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(
-                      height: cellHeight - dividerHeight,
-                      child: Center(
-                          child: Text("Value",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold))),
-                    ),
-                  ],
+    return Consumer<CalculatorBloc>(builder: (context, bloc, _) {
+      return Container(
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(16)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Material(
+              child: InkWell(
+                customBorder: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(16),
+                        topRight: Radius.circular(16))),
+                onTap: () {
+                  Navigator.of(context).push(PageRouteBuilder<CalculatorForm>(
+                      pageBuilder: (BuildContext context,
+                          Animation<double> animation,
+                          Animation<double> secondaryAnimation) {
+                    return CalculatorForm();
+                  }));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        height: cellHeight - dividerHeight,
+                        child: Center(
+                            child: Text("Value",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold))),
+                      ),
+                    ],
+                  ),
                 ),
               ),
+              color: Colors.transparent,
             ),
-            color: Colors.transparent,
+            Container(color: Colors.grey, height: dividerHeight),
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0),
+              child: new People(
+                  cellHeight: cellHeight, dividerHeight: dividerHeight),
+            ),
+            Container(color: Colors.grey, height: dividerHeight),
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    height: cellHeight - dividerHeight,
+                    child: Center(
+                      child: Text(
+                        "10% tip",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: cellHeight - dividerHeight,
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Material(
+                            color: Colors.transparent,
+                            child: ButtonTheme(
+                              minWidth: 0,
+                              child: FlatButton(
+                                child: Icon(Icons.add,
+                                    size: 36, color: Colors.purple),
+                                shape: CircleBorder(),
+                                onPressed: () {
+                                  print("tapped");
+                                },
+                                padding: EdgeInsets.all(16),
+                              ),
+                            ),
+                          ),
+                          Material(
+                            color: Colors.transparent,
+                            child: ButtonTheme(
+                              minWidth: 0,
+                              child: FlatButton(
+                                child: Icon(Icons.remove, size: 36),
+                                shape: CircleBorder(),
+                                onPressed: null,
+                                padding: EdgeInsets.all(16),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+      );
+    });
+  }
+}
+
+class People extends StatelessWidget {
+  const People({
+    Key key,
+    @required this.cellHeight,
+    @required this.dividerHeight,
+
+  }) : super(key: key);
+
+  final num cellHeight;
+  final double dividerHeight;
+
+  @override
+  Widget build(BuildContext context) {
+    final counter = Provider.of<CalculatorBloc>(context);
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Container(
+          height: cellHeight - dividerHeight,
+          child: Center(
+            child: Text(
+              "${counter.people} people",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
           ),
-          Container(color: Colors.grey, height: dividerHeight),
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0),
+        ),
+        Container(
+          height: cellHeight - dividerHeight,
+          child: Center(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Container(
-                  height: cellHeight - dividerHeight,
-                  child: Center(
-                    child: Text(
-                      "2 people",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                Material(
+                  color: Colors.transparent,
+                  child: ButtonTheme(
+                    minWidth: 0,
+                    child: FlatButton(
+                      child: Icon(Icons.add, size: 36, color: Colors.purple),
+                      shape: CircleBorder(),
+                      onPressed: () {
+                        print("tapped");
+                      },
+                      padding: EdgeInsets.all(16),
                     ),
                   ),
                 ),
-                Container(
-                  height: cellHeight - dividerHeight,
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Material(
-                          color: Colors.transparent,
-                          child: ButtonTheme(
-                            minWidth: 0,
-                            child: FlatButton(
-                              child: Icon(Icons.add,
-                                  size: 36, color: Colors.purple),
-                              shape: CircleBorder(),
-                              onPressed: () {
-                                print("tapped");
-                              },
-                              padding: EdgeInsets.all(16),
-                            ),
-                          ),
-                        ),
-                        Material(
-                          color: Colors.transparent,
-                          child: ButtonTheme(
-                            minWidth: 0,
-                            child: FlatButton(
-                              child: Icon(Icons.remove, size: 36),
-                              shape: CircleBorder(),
-                              onPressed: null,
-                              padding: EdgeInsets.all(16),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-          Container(color: Colors.grey, height: dividerHeight),
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Container(
-                  height: cellHeight - dividerHeight,
-                  child: Center(
-                    child: Text(
-                      "10% tip",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                Material(
+                  color: Colors.transparent,
+                  child: ButtonTheme(
+                    minWidth: 0,
+                    child: FlatButton(
+                      child: Icon(Icons.remove, size: 36),
+                      shape: CircleBorder(),
+                      onPressed: null,
+                      padding: EdgeInsets.all(16),
                     ),
                   ),
                 ),
-                Container(
-                  height: cellHeight - dividerHeight,
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Material(
-                          color: Colors.transparent,
-                          child: ButtonTheme(
-                            minWidth: 0,
-                            child: FlatButton(
-                              child: Icon(Icons.add,
-                                  size: 36, color: Colors.purple),
-                              shape: CircleBorder(),
-                              onPressed: () {
-                                print("tapped");
-                              },
-                              padding: EdgeInsets.all(16),
-                            ),
-                          ),
-                        ),
-                        Material(
-                          color: Colors.transparent,
-                          child: ButtonTheme(
-                            minWidth: 0,
-                            child: FlatButton(
-                              child: Icon(Icons.remove, size: 36),
-                              shape: CircleBorder(),
-                              onPressed: null,
-                              padding: EdgeInsets.all(16),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
               ],
             ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }
