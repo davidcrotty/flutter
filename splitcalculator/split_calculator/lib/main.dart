@@ -294,7 +294,6 @@ class People extends StatelessWidget {
     Key key,
     @required this.cellHeight,
     @required this.dividerHeight,
-
   }) : super(key: key);
 
   final num cellHeight;
@@ -327,11 +326,13 @@ class People extends StatelessWidget {
                   child: ButtonTheme(
                     minWidth: 0,
                     child: FlatButton(
-                      child: Icon(Icons.add, size: 36, color: Colors.purple),
+                      child: Icon(Icons.add, size: 36, color: counter.plusEnabled ? Colors.purple : Colors.grey),
                       shape: CircleBorder(),
-                      onPressed: () {
-                        counter.incrementPeople();
-                      },
+                      onPressed: counter.plusEnabled
+                          ? () {
+                              counter.incrementPeople();
+                            }
+                          : null,
                       padding: EdgeInsets.all(16),
                     ),
                   ),
@@ -341,9 +342,13 @@ class People extends StatelessWidget {
                   child: ButtonTheme(
                     minWidth: 0,
                     child: FlatButton(
-                      child: Icon(Icons.remove, size: 36),
+                      child: Icon(Icons.remove, size: 36, color: counter.minusEnabled ? Colors.purple : Colors.grey),
                       shape: CircleBorder(),
-                      onPressed: null,
+                      onPressed: counter.minusEnabled
+                          ? () {
+                              counter.decrementPeople();
+                            }
+                          : null,
                       padding: EdgeInsets.all(16),
                     ),
                   ),
